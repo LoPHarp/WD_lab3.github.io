@@ -1,0 +1,83 @@
+<!-- Сторінка для реєстрації користувача -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Налаштування метаданих та стилів -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігаційне меню -->
+    <div id="navbar-container"></div>
+
+    <!-- Форма для реєстрації -->
+    <main class="container mt-5 pt-5">
+        <h2>Register</h2>
+        <form>
+            <div class="mb-3">
+                <label class="form-label" for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <div class="col-12">
+                    <h6 class="form-label">Gender</h6>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" id="radioMale" checked>
+                        <label class="form-check-label" for="radioMale">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline ms-3">
+                        <input type="radio" class="form-check-input" name="gender" id="radioFemale">
+                        <label class="form-check-label" for="radioFemale">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkRemember">
+                    <label class="form-check-label" for="checkRemember">Запам’ятати мене</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Увійти</button>
+        </form>
+    </main>
+
+    <!-- Футер -->
+    <div id="footer-container"></div>
+
+    <!-- Підключення скриптів -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/navbar.js"></script>
+    <script type="module">
+      import { UserController } from './js/controllers/userController.js';
+      document.querySelector('form').addEventListener('submit', (event) => 
+      {
+        event.preventDefault();
+        const email = document.getElementById('inputEmail').value;
+        const password = document.getElementById('inputPassword').value;
+        const gender = document.querySelector('input[name="gender"]:checked').id === 'radioMale' ? 'Male' : 'Female';
+        const dateOfBirth = document.getElementById('dob').value;
+        if (UserController.register(email, password, gender, dateOfBirth)) 
+        {
+          window.location.href = 'login.html';
+        } 
+        else 
+        {
+          alert('Користувач з таким email вже існує');
+        }
+      });
+    </script>
+</body>
+</html>

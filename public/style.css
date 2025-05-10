@@ -1,0 +1,40 @@
+/* Загальні стилі для сторінки */
+body {
+    background-color: rgb(232, 239, 252);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стилі для навігаційного меню */
+.nav-item.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(255, 255, 255) !important;
+}
+
+.nav-item.nav-link.active {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white !important;
+}
+
+/* Стилі для футера */
+.footer {
+    background-color: #212529;
+    color: #fff;
+    padding: 0.5rem 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1020;
+    font-size: 0.8rem;
+}
+
+/* Стилі для кнопки додавання блогу */
+.add-blog-btn {
+    z-index: 1030;
+}
+
+/* Стилі для полів введення в формах */
+main form .form-control {
+    background-color: white !important;
+}
